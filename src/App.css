@@ -1,0 +1,178 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.card-custom {
+  background-color: #D9E7E9 !important;
+}
+
+.card-image figure {
+  background-color: white; /* Background putih */
+  padding: 10px; /* Memberi jarak dari gambar ke tepi */
+  border-radius: 12px; /* Membuat sudut lengkung */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image figure img {
+  max-width: 70px; /* Mengecilkan gambar */
+  height: auto; /* Menyesuaikan tinggi */
+}
+.custom-column {
+  width: 70%;      /* Atur lebar sesuai keinginan */
+  margin: 0 auto;  /* Agar berada di tengah */
+}
+
+
+.container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 80vh; /* Sesuaikan tinggi sesuai kebutuhan */
+  padding: 10px;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.background-image-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-height: 50vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.background-image-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  max-height: 50vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.full-height {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Pastikan kontainer memenuhi seluruh tinggi layar */
+}
+
+.full-height .container {
+  flex-grow: 1; /* Mendorong container agar menempati ruang yang tersisa */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Menempel ke bawah */
+}
+
+
+.title-no-1 {
+  font-size: 4rem; /* Perbesar ukuran */
+  font-weight: bold;
+  color: #187078; /* Hijau tua */
+  letter-spacing: 2px;
+  margin-bottom: -1; /* Menghilangkan margin bawah */
+  line-height: 1.2; /* Mengurangi spasi antar baris */
+}
+
+.title-no-2 {
+  font-size: 4rem;
+  color: #187078;
+  margin-top: 0; /* Menghilangkan margin atas */
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.title-no-3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #187078;
+  margin-top: 0; /* Menghilangkan margin atas */
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.title-no-4 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #187078;
+  margin-top: 0; /* Menghilangkan margin atas */
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.text-small {
+  margin-top: 5px; /* Mengurangi jarak dari atas */
+  margin-bottom: 0; /* Menghilangkan margin bawah */
+  line-height: 1.2;
+}
+
+.tag.is-custom-success {
+  background-color: #187078 !important;
+  color: white !important;
+}
+
+.tag.is-custom-danger {
+  background-color: #A53826 !important;
+  color: white !important;
+}
+
+.button.is-custom-success {
+  background-color: #187078 !important;
+  color: white !important;
+}
+
+.button.is-custom-danger {
+  background-color: #A53826 !important;
+  color: white !important;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
