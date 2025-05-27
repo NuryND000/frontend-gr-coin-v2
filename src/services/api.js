@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000"; // URL backend
+const API_URL = "http://gr-coins.myuniv.cloud/api"; // URL backend
 
 // Membuat instance axios dengan konfigurasi default
 const axiosInstance = axios.create({
