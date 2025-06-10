@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 const NavbarAdmin = () => {
@@ -16,16 +17,16 @@ const NavbarAdmin = () => {
       aria-label="main navigation"
     >
       <div className="navbar-brand">
-        <a
+        <Link
           className="navbar-item"
-          href="/home-Admin"
+          to={"/home-admin"}
         >
           <img
-            src="/logo.png"
+            src={`${process.env.PUBLIC_URL}/logo.png`}
             alt="Logo"
             style={{ maxHeight: "50px", width: "auto" }}
           />
-        </a>
+        </Link>
 
         <button
           className={`button navbar-burger ${isActive ? "is-active" : ""}`}
@@ -48,44 +49,44 @@ const NavbarAdmin = () => {
 
         <div className="navbar-end">
           <div className="navbar-item">
-            <a
-              href="/home-admin"
+            <Link
+              to={"/home-admin"}
               className="title-no-4"
             >
               Dashboard
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
-            <a
-              href="/tugas-baru"
+            <Link
+              to={"/tugas-baru"}
               className="title-no-4"
             >
               Tugas Baru
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
-            <a
-              href="/tabel-tukar-koin"
+            <Link
+              to={"/tabel-tukar-koin"}
               className="title-no-4"
             >
               Data Tukar Koin
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
-            <a
-              href="/data-tambah-koin"
+            <Link
+              to={"/data-tambah-koin"}
               className="title-no-4"
             >
               Data Tambah Koin
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
-            <a
-              href="/pengaduan-pelanggan"
+            <Link
+              to={"/pengaduan-pelanggan"}
               className="title-no-4"
             >
               Data Komplain
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
             <div className="buttons">

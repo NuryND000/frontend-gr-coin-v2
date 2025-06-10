@@ -64,7 +64,7 @@ const TukarKoin = () => {
             <p className="title-no-1">Tukar Koin</p>
             <p>Pastikan jumlah minimal saldo Anda sebesar 10.000!</p>
             <img
-              src="/Aset-website/tukar koin.png"
+              src={`${process.env.PUBLIC_URL}/Aset-website/tukar koin.png`}
               alt="Placeholder"
               className="image"
             />

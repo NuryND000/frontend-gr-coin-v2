@@ -33,7 +33,7 @@ const Login = () => {
           <div className="column">
             <figure className="image">
               <img
-                src="/Aset-website/LOGIN.png"
+                src={`${process.env.PUBLIC_URL}/Aset-website/LOGIN.png`}
                 alt="Placeholder"
               />
             </figure>

@@ -18,7 +18,7 @@ const HomeUser = () => {
             <p className="title-no-1">GR Koin</p>
             <p className="title-no-2">SYSTEM</p>
             <p>Kumpulkan koin lebih banyak dan nikmati keuntungannya!</p>
-            <img src="/Aset-website/home user.png" alt="Placeholder" className="image" />
+            <img src={`${process.env.PUBLIC_URL}/Aset-website/home user.png`} alt="Placeholder" className="image" />
           </div>
 
           <div className="column mt-6">
@@ -31,7 +31,7 @@ const HomeUser = () => {
                   <div className="card-content">
                     <div className="card-image">
                       <figure className="image">
-                        <img src="/Aset-website/koin.png" alt="Tukar Koin" />
+                        <img src={`${process.env.PUBLIC_URL}/Aset-website/koin.png`} alt="Tukar Koin" />
                       </figure>
                     </div>
                     <div className="content has-text-centered">
@@ -47,7 +47,7 @@ const HomeUser = () => {
                   <div className="card-content">
                     <div className="card-image">
                       <figure className="image">
-                        <img src="/Aset-website/riwayat.png" alt="Riwayat Koin" />
+                        <img src={`${process.env.PUBLIC_URL}/Aset-website/riwayat.png`} alt="Riwayat Koin" />
                       </figure>
                     </div>
                     <div className="content has-text-centered">
@@ -63,7 +63,7 @@ const HomeUser = () => {
                   <div className="card-content">
                     <div className="card-image">
                       <figure className="image">
-                        <img src="/Aset-website/pengaduan.png" alt="Pengaduan" />
+                        <img src={`${process.env.PUBLIC_URL}/Aset-website/pengaduan.png`} alt="Pengaduan" />
                       </figure>
                     </div>
                     <div className="content has-text-centered">
@@ -85,7 +85,7 @@ const HomeUser = () => {
                   <div className="card-content">
                     <div className="card-image">
                       <figure className="image">
-                        <img src="/Aset-website/faq.png" alt="FAQ" />
+                        <img src={`${process.env.PUBLIC_URL}/Aset-website/faq.png`} alt="FAQ" />
                       </figure>
                     </div>
                     <div className="content has-text-centered">
@@ -101,7 +101,7 @@ const HomeUser = () => {
                   <div className="card-content">
                     <div className="card-image">
                       <figure className="image">
-                        <img src="/Aset-website/about us(1).png" alt="About Us" />
+                        <img src={`${process.env.PUBLIC_URL}/Aset-website/about us(1).png`} alt="About Us" />
                       </figure>
                     </div>
                     <div className="content has-text-centered">

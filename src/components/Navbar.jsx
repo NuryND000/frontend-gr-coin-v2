@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
@@ -16,16 +17,16 @@ const Navbar = () => {
       aria-label="main navigation"
     >
       <div className="navbar-brand">
-        <a
+        <Link
           className="navbar-item"
-          href="/home-user"
+          to={"/home-user"}
         >
           <img
-            src="/logo.png"
+            src={`${process.env.PUBLIC_URL}/logo.png`}
             alt="Logo"
             style={{ maxHeight: "50px", width: "auto" }}
           />
-        </a>
+        </Link>
 
         <button
           className={`button navbar-burger ${isActive ? "is-active" : ""}`}
@@ -48,52 +49,52 @@ const Navbar = () => {
 
         <div className="navbar-end">
           <div className="navbar-item">
-            <a
-              href="/home-user"
+            <Link
+              to={"/home-user"}
               className="title-no-4"
             >
               Dashboard
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
-            <a
-              href="/tukar-koin"
+            <Link
+              to={"/tukar-koin"}
               className="title-no-4"
             >
               Tukar Koin
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
-            <a
-              href="/riwayat-koin"
+            <Link
+              to={"/riwayat-koin"}
               className="title-no-4"
             >
               Riwayat Koin
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
-            <a
-              href="/pengaduan-saya"
+            <Link
+              to={"/pengaduan-saya"}
               className="title-no-4"
             >
               Komplain
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
-            <a
-              href="/about-us"
+            <Link
+              to={"/about-us"}
               className="title-no-4"
             >
               About Us
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
-            <a
-              href="/ganti-password"
+            <Link
+              to={"/ganti-password"}
               className="title-no-4"
             >
               Ganti Password
-            </a>
+            </Link>
           </div>
           <div className="navbar-item">
             <div className="buttons">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import NavbarAdmin from "../components/NavbarAdmin";
 import { updateUser } from "../services/api";
 import  AuthContext from "../context/AuthContext"; // Import AuthContext
@@ -176,13 +176,13 @@ const EditPelanggan = () => {
                 >
                   Simpan
                 </button>
-                <a
-                  href={`/home-admin`}
+                <Link
+                  to={`/home-admin`}
                   className="button is-custom-danger is-rounded"
                   style={{ maxHeight: "150px", width: "200px" }}
                 >
                   Batal
-                </a>
+                </Link>
               </div>
             </form>
           </div>

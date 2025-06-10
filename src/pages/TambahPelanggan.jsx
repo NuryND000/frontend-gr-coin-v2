@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavbarAdmin from "../components/NavbarAdmin";
 import { registerUser } from "../services/api"; // Pastikan ada fungsi ini di API service
 import AuthContext from "../context/AuthContext"; // Import AuthContext
@@ -192,13 +192,13 @@ useEffect(() => {
                 >
                   Simpan
                 </button>
-                <a
-                  href="/home-admin"
+                <Link
+                  to="/home-admin"
                   className="button is-custom-danger is-rounded"
                   style={{ maxHeight: "150px", width: "200px" }}
                 >
                   Batal
-                </a>
+                </Link>
               </div>
             </form>
 

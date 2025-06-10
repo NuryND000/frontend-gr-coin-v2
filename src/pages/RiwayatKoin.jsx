@@ -28,7 +28,7 @@ const RiwayatKoin = () => {
             <p className="title-no-2">Tukar Koin</p>
             <p>Pantau semua penukaran koin Anda di sini!</p>
             <img
-              src="/Aset-website/riwayat tukar koin.png"
+              src={`${process.env.PUBLIC_URL}/Aset-website/riwayat tukar koin.png`}
               alt="Placeholder"
               className="image"
             />

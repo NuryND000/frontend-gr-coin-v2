@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import NavbarAdmin from "../components/NavbarAdmin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import "./HomeAdmin.css";
 import { FaEdit, FaTrashAlt, FaPlusCircle } from "react-icons/fa";
@@ -9,6 +9,7 @@ import { deleteUser } from "../services/api";
 const HomeAdmin = () => {
   const { user, users, coinChanges, coinTransactions, token } = useContext(AuthContext);
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
   console.log(coinChanges);
   const hitungTotalKoin = (id) => {
     try {
@@ -40,7 +41,7 @@ const HomeAdmin = () => {
       try {
         await deleteUser(token, user.id); // Panggil API untuk menghapus pengguna
         alert("Pengguna berhasil dihapus.");
-        window.location.href = "/home-admin"; // Redirect ke halaman utama admin
+        navigate('/home-admin');
       } catch (error) {
         console.error("Gagal menghapus pengguna:", error);
         alert("Terjadi kesalahan saat menghapus pengguna.");
@@ -59,7 +60,7 @@ const HomeAdmin = () => {
             <p className="title-no-5">SYSTEM</p>
             <p>Kelola sistem dan pantau aktivitas pelanggan di sini.</p>
             
-              <img src="/Aset-website/home admin.png" alt="Placeholder" className="image" />
+              <img src={`${process.env.PUBLIC_URL}/Aset-website/home admin.png`} alt="Placeholder" className="image" />
             
           </div>
 
@@ -83,9 +84,9 @@ const HomeAdmin = () => {
                       </div>
                       <div className="column">
                         <div className="control">
-                          <a href="/tambah-pelanggan" className="button is-rounded is-custom-success is-small">
+                          <Link to="/tambah-pelanggan" className="button is-rounded is-custom-success is-small">
                             Tambah Pelanggan
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>

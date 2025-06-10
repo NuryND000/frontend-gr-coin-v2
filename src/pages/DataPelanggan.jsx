@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import NavbarAdmin from "../components/NavbarAdmin";
 import AuthContext from "../context/AuthContext";
 import { deleteUser } from "../services/api";
@@ -7,6 +7,7 @@ import { deleteUser } from "../services/api";
 const DataPelanggan = () => {
   const { id } = useParams();
   const { token, users, coinChanges, coinTransactions } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   // Cari user berdasarkan ID dari URL
   const user = users.find((u) => u.id === parseInt(id));
@@ -30,7 +31,7 @@ const DataPelanggan = () => {
       try {
         await deleteUser(token, user.id); // Panggil API untuk menghapus pengguna
         alert("Pengguna berhasil dihapus.");
-        window.location.href = "/home-admin"; // Redirect ke halaman utama admin
+        navigate('/home-admin');
       } catch (error) {
         console.error("Gagal menghapus pengguna:", error);
         alert("Terjadi kesalahan saat menghapus pengguna.");
@@ -54,13 +55,13 @@ const DataPelanggan = () => {
 
             <div className="buttons is-centered mt-3">
               <div className="control">
-                <a
-                  href={`/edit-pelanggan/${user.id}`}
+                <Link
+                  to={`/edit-pelanggan/${user.id}`}
                   className="button is-warning is-rounded"
                   style={{ maxHeight: "150px", width: "200px" }}
                 >
                   Edit
-                </a>
+                </Link>
               </div>
               <div className="control">
                 <button
@@ -73,10 +74,11 @@ const DataPelanggan = () => {
               </div>
             </div>
             <img
-              src="/Aset-website/GR Koin (4).png"
-              alt="Placeholder"
-              className="image"
-            />
+  src={`${process.env.PUBLIC_URL}/Aset-website/GR Koin (4).png`}
+  alt="Placeholder"
+  className="image"
+/>
+
           </div>
 
           <div className="column mt-6">
@@ -88,12 +90,12 @@ const DataPelanggan = () => {
                       <p className="is-size-4 mb-0 has-text-weight-bold has-text-black">
                         Jumlah Koin :
                       </p>
-                      <a
+                      <Link
                         href={`/tambah-koin/${user.id}`}
                         className="button is-rounded is-custom-success"
                       >
                         Tambah
-                      </a>
+                      </Link>
                     </div>
                     <div className="column has-text-centered">
                       <div className="card">

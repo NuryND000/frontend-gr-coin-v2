@@ -1,6 +1,7 @@
 {
   "name": "gr-coin",
   "version": "0.1.0",
+  "homepage": "/gr-coin",
   "private": true,
   "dependencies": {
     "axios": "^1.7.9",

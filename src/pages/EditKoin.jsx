@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import NavbarAdmin from "../components/NavbarAdmin";
 import { updateCoinExchange } from "../services/api";
 import AuthContext from "../context/AuthContext";
@@ -70,13 +70,13 @@ const UpdateKoin = () => {
                   </button>
                 </div>
                 <div className="control">
-                  <a
-                    href={`/home-admin`}
+                  <Link
+                    to={`/home-admin`}
                     className="button is-custom-danger is-rounded"
                     style={{ width: "200px" }}
                   >
                     Batal
-                  </a>
+                  </Link>
                 </div>
               </div>
             </form>

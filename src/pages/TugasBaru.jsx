@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import NavbarAdmin from "../components/NavbarAdmin";
 import { updateTransaction } from "../services/api";
+import { Link } from "react-router-dom";
 
 const TugasBaru = () => {
   const { token, users, coinTransactions } = useContext(AuthContext);
@@ -41,7 +42,7 @@ const TugasBaru = () => {
             <p className="title-no-1">Tugas Baru</p>
             <p className="title-no-2">Kelola Penukaran</p>
             <p>Pastikan setiap penukaran koin diproses dengan cepat dan akurat.</p>
-            <img src="/Aset-website/home admin.png" alt="Admin" className="image" />
+            <img src={`${process.env.PUBLIC_URL}/Aset-website/home admin.png`} alt="Admin" className="image" />
           </div>
           <div className="column mt-6">
             <div className="card card-custom">
@@ -59,13 +60,13 @@ const TugasBaru = () => {
                               <p>Tukar koin {uang(t.amount)}</p>
                             </div>
                             <div className="column">
-                              <a
-                                href={`/data-pelanggan/${t.userId}`}
+                              <Link
+                                to={`/data-pelanggan/${t.userId}`}
                                 className="button is-custom-success is-rounded"
                                 style={{ width: "150px" }}
                               >
                                 Lihat Data
-                              </a>
+                              </Link>
                             </div>
                             <div className="column">
                               <button

@@ -61,7 +61,7 @@ const formatTanggal = (tanggal) => {
             <p className="title-no-1">Data</p>
             <p className="title-no-2">Komplain</p>
             <p>Selesaikan komplain pelanggan secepatnya!</p>
-            <img src="/Aset-website/home admin.png" alt="Admin" className="image" />
+            <img src={`${process.env.PUBLIC_URL}/Aset-website/home admin.png`} alt="Admin" className="image" />
           </div>
           <div className="column mt-6">
             <div className="card card-custom">

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavbarGuest from "../components/NavbarGuest";
 
 const Beranda = () => {
@@ -31,20 +32,20 @@ const Beranda = () => {
 
               </div>
               <div className="control">
-                <a
-                  href="/login"
+              <Link
+                  to="/login"
                   className="button is-warning is-rounded"
                   style={{ maxHeight: "150px", width: "200px" }}
                 >
                   Login
-                </a>
+                </Link>
               </div>
             </div>
           </div>
           <div className="column">
             <figure className="image">
-              <img
-                src="/Aset-website/beranda.png"
+            <img
+                src={`${process.env.PUBLIC_URL}/Aset-website/beranda.png`}
                 alt="Placeholder"
               />
             </figure>
