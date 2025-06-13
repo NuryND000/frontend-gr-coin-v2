@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 const NavbarAdmin = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const [isActive, setIsActive] = useState(false);
 
   const toggleNavbar = () => {
@@ -90,13 +90,13 @@ const NavbarAdmin = () => {
           </div>
           <div className="navbar-item">
             <div className="buttons">
-            <a
+            <button
                 onClick={logout}
                 className="button is-rounded is-warning is-outlined"
                 style={{ maxHeight: "150px", width: "200px" }}
               >
                 <strong className="has-text-dark"> Log Out </strong>
-              </a>
+              </button>
             </div>
           </div>
         </div>

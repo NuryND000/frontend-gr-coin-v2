@@ -41,7 +41,7 @@ const HomeAdmin = () => {
       try {
         await deleteUser(token, user.id); // Panggil API untuk menghapus pengguna
         alert("Pengguna berhasil dihapus.");
-        navigate('/home-admin');
+        navigate(0);
       } catch (error) {
         console.error("Gagal menghapus pengguna:", error);
         alert("Terjadi kesalahan saat menghapus pengguna.");

@@ -8,34 +8,50 @@ import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 
 const DataTambahCoin = () => {
-  const { user, coinChanges, token } = useContext(AuthContext);
+  const { users, coinChanges, token } = useContext(AuthContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [startDate, setStartDate] = useState(""); // yyyy-mm-dd
   const [endDate, setEndDate] = useState(""); // yyyy-mm-dd
+  const [sortOrder, setSortOrder] = useState("asc");
 
-  // Fungsi untuk cek apakah tanggal ada dalam rentang filter
-  const isWithinDateRange = (dateStr) => {
-    if (!dateStr) return false;
-    const date = new Date(dateStr);
-    if (startDate && date < new Date(startDate)) return false;
-    if (endDate && date > new Date(endDate + "T23:59:59")) return false; // Akhir hari endDate
-    return true;
-  };
-
-  const filteredExchanges = (coinChanges || [])
-  .filter((exchange) => {
-    const matchesSearch =
-      exchange.coinName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      exchange.user?.username?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      exchange.user?.tlp?.toLowerCase().includes(searchTerm.toLowerCase());
-
-    const matchesDate = isWithinDateRange(exchange.date);
-
-    return matchesSearch && matchesDate;
-  })
-  .sort((a, b) => new Date(b.date) - new Date(a.date)); // urutkan terbaru dulu
-
-
+  // // Fungsi untuk cek apakah tanggal ada dalam rentang filter
+  // const isWithinDateRange = (dateStr) => {
+  //   if (!dateStr) return false;
+  //   const date = new Date(dateStr);
+  //   if (startDate && date < new Date(startDate)) return false;
+  //   if (endDate && date > new Date(endDate + "T23:59:59")) return false; // Akhir hari endDate
+  //   return true;
+  // };
+  const start = startDate ? new Date(startDate) : null;
+  const end = endDate ? new Date(endDate) : null;
+  
+  if (start) start.setHours(0, 0, 0, 0);
+  if (end) end.setHours(23, 59, 59, 999);
+  
+  const filteredExchanges = coinChanges
+    .filter((item) => {
+      const user = users.find((user) => user.id === parseInt(item.userId));
+      if (!user) return false;
+  
+      const transactionDate = new Date(item.date);
+  
+      const matchSearch =
+      searchTerm === "" ||
+        user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.tlp.includes(searchTerm);
+  
+      const matchDate =
+        (!start || transactionDate >= start) &&
+        (!end || transactionDate <= end);
+  
+      return matchSearch && matchDate;
+    })
+    .sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
+    });
+  
   const formatDate = (dateStr) => {
     if (!dateStr) return "-";
     const date = new Date(dateStr);
@@ -122,12 +138,13 @@ const DataTambahCoin = () => {
   // Tambahkan data
   let total = 0;
   filteredExchanges.forEach((item, index) => {
+    const user = users.find((user) => user.id === parseInt(item.userId));
     total += item.amount || 0;
     worksheet.addRow({
       no: index + 1,
       tanggal: formatDate(item.date),
-      user: item.user?.username || "-",
-      noWA: item.user?.tlp || "-",
+      user: user?.username || "-",
+      noWA: user?.tlp || "-",
       jumlah: item.amount,
     });
   });
@@ -224,7 +241,9 @@ const DataTambahCoin = () => {
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Tanggal</th>
+                    <th onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}>
+                      Tanggal {sortOrder === "asc" ? "↑" : "↓"}
+                    </th>
                     <th>User</th>
                     <th>No WA</th>
                     <th>Jumlah Tambah Koin</th>
@@ -233,12 +252,14 @@ const DataTambahCoin = () => {
                 </thead>
                 <tbody>
                   {filteredExchanges.length > 0 ? (
-                    filteredExchanges.map((exchange, i) => (
+                    filteredExchanges.map((exchange, i) => {
+                      const user = users.find((user) => user.id === parseInt(exchange.userId));
+                      return (
                       <tr key={exchange.id}>
                         <td>{i + 1}</td>
                         <td>{formatDate(exchange.date)}</td>
-                        <td>{exchange.user?.username || "-"}</td>
-                        <td>{exchange.user?.tlp || "-"}</td>
+                        <td>{user?.username || "-"}</td>
+                        <td>{user?.tlp || "-"}</td>
                         <td>{formatNumber(exchange.amount)}</td>
                         <td>
                           <div
@@ -263,7 +284,7 @@ const DataTambahCoin = () => {
                           </div>
                         </td>
                       </tr>
-                    ))
+                    )})
                   ) : (
                     <tr>
                       <td colSpan="6" className="has-text-centered">

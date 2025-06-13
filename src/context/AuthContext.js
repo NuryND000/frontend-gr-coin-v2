@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
   getCoinExchanges, 
@@ -33,15 +33,8 @@ export const AuthProvider = ({ children }) => {
     }
   }, [token, user]);
 
-  // Ambil data transaksi & koin setelah user diperbarui
-  useEffect(() => {
-    if (token && user?.role) {
-      fetchData();
-    }
-  }, [token, user]);
 
-  // Ambil data transaksi & koin berdasarkan role user
-  const fetchData = async () => {
+  const fetchData = useCallback( async () => {
     try {
       if (user?.role === "admin") {
         const [coinChangeRes, coinTransactionRes, usersRes, complaintsRes] = await Promise.all([
@@ -67,7 +60,15 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error("Error fetching transaction data:", error);
     }
-  };
+  }, [token, user]);
+
+  // Ambil data transaksi & koin setelah user diperbarui
+  useEffect(() => {
+    if (token && user?.role) {
+      fetchData();
+    }
+  }, [token, user, fetchData]);
+
 
   const login = (token, user) => {
     setToken(token);

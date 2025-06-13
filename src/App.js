@@ -57,7 +57,7 @@ function PublicRoute({ element }) {
 
 function App() {
     return (
-        <Router basename="/gr-coin">
+        <Router>
             <AuthProvider>
                 <Routes>
                     <Route path="/" element={<Beranda />} />

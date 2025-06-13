@@ -6,7 +6,7 @@ import AuthContext from "../context/AuthContext"; // Import AuthContext
 
 const TambahPelanggan = () => {
   const navigate = useNavigate();
-  const { token, fetchData } = useContext(AuthContext);
+  const { fetchData } = useContext(AuthContext);
   const [sameAsPhone, setSameAsPhone] = useState(false);
   // State untuk menyimpan input form
   const [formData, setFormData] = useState({
@@ -52,7 +52,7 @@ useEffect(() => {
     e.preventDefault();
     console.log(formData);
     try {
-      const user = await registerUser(formData);
+      await registerUser(formData);
       fetchData();
       alert("Pelanggan berhasil ditambahkan!");
       navigate(`/home-admin`); // Arahkan ke halaman data pelanggan setelah sukses

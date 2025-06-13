@@ -7,7 +7,7 @@ import AuthContext from "../context/AuthContext"; // Import AuthContext
 const TambahPelanggan = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { token, fetchData, use } = useContext(AuthContext);
+  const { token, fetchData} = useContext(AuthContext);
   const [amount, setAmount] = useState("");
 
   const handleSubmit = async (e) => {
@@ -37,20 +37,6 @@ const TambahPelanggan = () => {
             <p className="title-no-2 has-text-weight-bold">Tambah Koin!</p>
             <p>Pastikan isian data pelanggan sudah benar sebelum disimpan!</p>
             <form onSubmit={handleSubmit}>
-                          <div className="field mt-5">
-                <div className="control">
-                  <input
-                    className="input is-warning is-rounded"
-                    type="number"
-                    placeholder="Masukkan Jumlah Koin"
-                    name="koin"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    style={{ maxHeight: "45px", width: "500px" }}
-                    required
-                  />
-                </div>
-              </div>
               <div className="field mt-5">
                 <div className="control">
                   <input

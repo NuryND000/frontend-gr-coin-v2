@@ -5,6 +5,12 @@ const CoinAnda = () => {
   const { coinChanges, coinTransactions } = useContext(AuthContext);
   const [totalKoin, setTotalKoin] = useState("0");
 
+  const formatUang = useCallback((nominal) => {
+    if (!nominal) return "0";
+    return nominal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }, []);
+
+
   useEffect(() => {
     const hitungTotalKoin = () => {
       try {
@@ -17,13 +23,10 @@ const CoinAnda = () => {
     };
 
     hitungTotalKoin();
-  }, [coinChanges, coinTransactions]);
+  }, [coinChanges, coinTransactions, formatUang]);
 
   // Fungsi untuk format uang dengan titik sebagai pemisah ribuan
-  const formatUang = useCallback((nominal) => {
-    if (!nominal) return "0";
-    return nominal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }, []);
+
 
   return (
     <div className="card card-custom">

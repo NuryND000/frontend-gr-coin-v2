@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 import Navbar from "../components/Navbar";
-import { createComplaint } from "../services/api"; // Pastikan sudah ada di service
-import CoinAnda from "../components/CoinAnda";
+import { createComplaint } from "../services/api"; 
 
 const PengaduanSaya = () => {
   const { complaints, user, token, fetchData } = useContext(AuthContext);
@@ -26,19 +25,6 @@ useEffect(() => {
   
     setComplaints(sortedComplaints);
   }, [complaints]);
-
-  const uang = (nominal) => {
-    var number_string = nominal.toString(),
-      sisa = number_string.length % 3,
-      rupiah = number_string.substr(0, sisa),
-      ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-    if (ribuan) {
-      var separator = sisa ? "." : "";
-      rupiah += separator + ribuan.join(".");
-    }
-    return rupiah;
-  };
 
   const handleChange = (e) => {
     setComplaint(e.target.value);
